@@ -10,7 +10,7 @@ Delphi 7用 SunCGrid.pas（SUNTEC、2000–2009）を基にした移植版です
 1. Lazarusで「パッケージ → パッケージファイルを開く」から `sungridlcl.lpk` を開きます。
 2. 「コンパイル」を実行します。
 3. 「使用 → インストール」を選び、IDEを再構築します。
-4. コンポーネントパレットの「Suntec」に `TSunColGrid` が追加されます。
+4. コンポーネントパレットの「164SYSTEMS」に `TSunColGrid` が追加されます。
 
 IDEへの登録が不要な場合は、SunCGrid.pasをプロジェクトのユニット検索パスに置き、usesにSunCGridを追加して生成できます。
 

@@ -22,7 +22,7 @@ The local baseline is Free Pascal 3.2.2. Install Lazarus/LCL and the development
 
 1. Clone/download the repository and open `sungridlcl.lpk` from **Package → Open package file** in Lazarus.
 2. Compile, then **Use → Install**, and rebuild the IDE.
-3. Find `TSunColGrid` on the **Suntec** palette.
+3. Find `TSunColGrid` on the **164SYSTEMS** palette.
 
 For runtime-only use, put `SunCGrid.pas` on the project unit search path and add `SunCGrid` to `uses`. Delphi DCU files are not usable with FPC. The original DCR is not distributed or loaded; Lazarus uses its default component icon.
 

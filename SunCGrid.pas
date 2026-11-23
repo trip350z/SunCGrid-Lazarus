@@ -176,7 +176,7 @@ procedure Register;
 implementation
 procedure Register;
 begin
-  RegisterComponents('Suntec', [TSunColGrid]);
+  RegisterComponents('164SYSTEMS', [TSunColGrid]);
 end;
 //-----------------------------------------------------------------------------
 // コンストラクタ
