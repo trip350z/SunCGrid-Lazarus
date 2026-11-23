@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Prepare the standalone public repository with English/Japanese guides, provenance and license-status notices, issue/PR templates, and build scripts.
-- Add Windows x64, Linux GTK2, and macOS Intel Cocoa build/test CI.
+- Pass Windows x64, Linux GTK2, and macOS Intel Cocoa package/demo builds and regression tests in GitHub Actions on 2026-11-23.
 - Add regression coverage for parameter records, range bounds, font ownership/index adjustment, repeated clearing, and column shrink/regrow behavior.
 
 ## 2026-11-02 — Initial LCL port

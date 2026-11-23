@@ -80,7 +80,7 @@ macOS用プロジェクトはUseAppBundleを有効にしています。配布用
 ## 検証状況
 
 パッケージと両サンプルプロジェクトのXML構文、参照ファイルの存在、ソース内のWindows API依存の除去、build.shのLF改行を確認しました。
-Windows x64 / FPC 3.2.2でパッケージのコンパイルを確認しました。CIではWindows x64、Linux GTK2、macOS Intel Cocoaのビルドと回帰テストを実行します。最新の結果はCIリンクを確認してください。IDE登録、画面の見た目、IME、Qt、Apple Siliconは別途確認が必要です。
+Windows x64 / FPC 3.2.2でパッケージ・デモ・テストをローカル検証しました。2026-11-23の[CI検証](https://github.com/trip350z/SunCGrid-Lazarus/actions/runs/45105065514)で、Windows x64、Linux GTK2、macOS Intel Cocoaのビルドと回帰テストがすべて通過しました。最新の結果はCIリンクを確認してください。IDE登録、画面の見た目、IME、Qt、Apple Siliconは別途確認が必要です。
 Lazarus上でビルド後、サンプルの表示、セル編集、選択移動、ClearAllCellParamsの繰り返し呼び出しを確認してください。
 
 各OSで確認する項目:

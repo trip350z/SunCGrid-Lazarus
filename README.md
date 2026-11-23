@@ -14,7 +14,7 @@ Original source credits: **SUNTEC Konagai (2000, 2009), SUNTEC Toshima (2005)**.
 | Linux | `gtk2`, with Qt5/Qt6 build options | `demo/SunGridDemo.lpi` |
 | macOS | `cocoa` | `demo/SunGridDemoMac.lpi` |
 
-CI builds the package and demo and runs parameter/lifecycle tests on Windows x64, Linux GTK2, and macOS Intel Cocoa. Check the Actions results for actual run outcomes. Apple Silicon, Qt widget sets, IDE installation, and visual behavior require separate validation.
+Package/demo builds and parameter/lifecycle tests passed on Windows x64, Linux GTK2, and macOS Intel Cocoa in [the 2026-11-23 CI run](https://github.com/trip350z/SunCGrid-Lazarus/actions/runs/45105065514). Check Actions for subsequent run outcomes. Apple Silicon, Qt widget sets, IDE installation, and visual behavior require separate validation.
 
 The local baseline is Free Pascal 3.2.2. Install Lazarus/LCL and the development libraries for your chosen widget set. On Ubuntu/Debian include `fp-units-misc`, which Lazarus clipboard units require. On macOS also install Xcode Command Line Tools/SDK. Unix programs must load `cthreads` before `Interfaces`, as in the supplied programs.
 
