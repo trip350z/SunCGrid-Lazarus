@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="12"/>
+    <General><MainUnit Value="0"/><Title Value="SunGridDemo"/><UseAppBundle Value="True"/></General>
+    <RequiredPackages Count="1"><Item1><PackageName Value="LCL"/></Item1></RequiredPackages>
+    <Units Count="1"><Unit0><Filename Value="SunGridDemo.lpr"/><IsPartOfProject Value="True"/></Unit0></Units>
+  </ProjectOptions>
+  <CompilerOptions><Version Value="11"/>
+    <SearchPaths><OtherUnitFiles Value=".."/><UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)/$(LCLWidgetType)"/></SearchPaths>
+    <Target><Filename Value="SunGridDemo"/></Target>
+  </CompilerOptions>
+</CONFIG>

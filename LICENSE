@@ -1,0 +1,19 @@
+License status and retained rights
+=================================
+
+SunCGrid.pas is derived from the Delphi TSunColGrid source attributed to:
+  SUNTEC Konagai — 2000-01-31 and 2009-06-26
+  SUNTEC Toshima — 2005-03-04
+
+No license or redistribution conditions were stated in the original source
+supplied for this port. No additional original license text has been verified.
+The original author notices are retained. This repository does not relicense
+the original work or assert that it is MIT, BSD, public domain, or otherwise
+available under a particular open-source license.
+
+Publication of this repository is not a repository-wide license grant.
+Before copying, modifying, or redistributing the inherited component code,
+establish the applicable permissions with the original rights holder.
+
+Lazarus, LCL, and Free Pascal have their own licenses and are not distributed
+as part of this repository. See NOTICE.md for provenance and scope.

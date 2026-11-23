@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <Name Value="SunGridLCL"/>
+    <Type Value="RunAndDesignTime"/>
+    <Author Value="Original: SUNTEC; LCL port"/>
+    <Description Value="TSunColGrid for Lazarus LCL"/>
+    <Version Major="1"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths><UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)/$(LCLWidgetType)"/></SearchPaths>
+    </CompilerOptions>
+    <Files Count="1"><Item1>
+      <Filename Value="SunCGrid.pas"/>
+      <HasRegisterProc Value="True"/>
+      <UnitName Value="SunCGrid"/>
+    </Item1></Files>
+    <RequiredPkgs Count="1"><Item1><PackageName Value="LCL"/></Item1></RequiredPkgs>
+    <UsageOptions><UnitPath Value="$(PkgOutDir)"/></UsageOptions>
+  </Package>
+</CONFIG>

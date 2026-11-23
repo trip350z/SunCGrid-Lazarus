@@ -1,0 +1,21 @@
+name: Bug report / 不具合報告
+description: Report a reproducible SunCGrid problem
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment / 環境
+      description: OS/CPU, Lazarus/FPC, widget set, font and display scale
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps and expected/actual result / 再現手順と期待・実際の結果
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot and logs / スクリーンショット・ログ
+      description: Remove private cell contents before posting.

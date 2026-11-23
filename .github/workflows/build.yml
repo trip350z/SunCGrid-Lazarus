@@ -1,0 +1,66 @@
+name: Build and test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    name: Linux GTK2
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install Lazarus and test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends lazarus lcl-gtk2 fp-units-misc xvfb xauth
+      - name: Build package, demo, and smoke test
+        run: sh build.sh gtk2
+      - name: Lifecycle test
+        run: xvfb-run -a ./tests/SunGridSmoke
+
+  desktop:
+    name: ${{ matrix.label }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            label: Windows x64
+            widgetset: win32
+            demo: demo/SunGridDemo.lpi
+          - os: macos-15-intel
+            label: macOS Intel Cocoa
+            widgetset: cocoa
+            demo: demo/SunGridDemoMac.lpi
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install Lazarus
+        uses: gcarreno/setup-lazarus@3ee9d77e0c771b37c1069f218cb68bd5ce7c30fe # v3
+        with:
+          lazarus-version: '4.4'
+          with-cache: false
+      - name: Build package
+        run: lazbuild --build-all --widgetset=${{ matrix.widgetset }} sungridlcl.lpk
+      - name: Build demo
+        run: lazbuild --build-all --widgetset=${{ matrix.widgetset }} ${{ matrix.demo }}
+      - name: Build smoke test
+        run: lazbuild --build-all --widgetset=${{ matrix.widgetset }} tests/SunGridSmoke.lpi
+      - name: Windows lifecycle test
+        if: runner.os == 'Windows'
+        run: ./tests/SunGridSmoke.exe
+      - name: macOS lifecycle test
+        if: runner.os == 'macOS'
+        run: ./tests/SunGridSmoke
