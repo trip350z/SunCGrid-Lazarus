@@ -102,7 +102,7 @@ Ubuntu/DebianではLazarusの補助ユニットとしてfp-units-miscも用意�
 
 テストはtests/SunGridSmoke.lpiです。ビルド後にWindowsでは `./tests/SunGridSmoke.exe`、Linux/macOSでは `./tests/SunGridSmoke` を実行します。
 GTKのヘッドレス環境では `xvfb-run -a ./tests/SunGridSmoke` を使用します。
-セルパラメーター、境界値、フォントの所有関係と番号調整、繰り返し消去時のキャッシュ、列数の縮小・復元を検証します。
+セルパラメーター、境界値、フォントの所有関係と番号調整、繰り返し消去時のキャッシュ、列数の縮小・復元に加え、設定変更時の再描画要求、固定セルの既定値、無効な設定を拒否した後の書式保持を検証します。
 描画や操作の見た目を保証するテストではありません。
 
 貢献方法は[CONTRIBUTING.md](CONTRIBUTING.md)、変更履歴は[CHANGELOG.md](CHANGELOG.md)を参照してください。

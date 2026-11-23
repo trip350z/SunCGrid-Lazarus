@@ -90,6 +90,6 @@ The demo is the starting point for appearance checks. Passing the smoke test doe
 xvfb-run -a ./tests/SunGridSmoke
 ```
 
-The test covers cell parameter round trips, exclusive upper bounds, font ownership/index adjustment, repeated clearing/cache reset, column shrink/regrow behavior, and construction/destruction. It reports exceptions on stderr with exit code 1.
+The test covers cell parameter round trips, exclusive upper bounds, font ownership/index adjustment, repeated clearing/cache reset, column shrink/regrow behavior, construction/destruction, repaint requests after setting changes, fixed-cell defaults, and rejection of invalid parameters without formatting changes. It reports exceptions on stderr with exit code 1.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [CHANGELOG.md](CHANGELOG.md), and [NOTICE.md](NOTICE.md). Please include OS/CPU, Lazarus/FPC versions, widget set, reproduction steps, and screenshots for visual problems.

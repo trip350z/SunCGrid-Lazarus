@@ -87,6 +87,10 @@ type
     function GetCellMultiLines(ACol, ARow: integer): boolean;
     procedure SetCellMultiLines(ACol, ARow: integer; Value: boolean);
     procedure SetLayout(Value: TTextLayout);
+    procedure SetGridAlignment(Value: TAlignment);
+    procedure SetGridFixedAlignment(Value: TAlignment);
+    procedure SetGridFocusDraw(Value: Boolean);
+    procedure SetGridMultiLines(Value: Boolean);
   protected
     procedure DrawCell(ACol, ARow: longint; ARect: TRect;
       AState: TGridDrawState); override;
@@ -136,11 +140,11 @@ type
   published
     // 設計時プロパティ
     property Alignment: TAlignment
-      read FAlignment write FAlignment default taLeftJustify;
+      read FAlignment write SetGridAlignment default taLeftJustify;
     property FixedAlignment: TAlignment
-      read FFixedAlignment write FFixedAlignment default taLeftJustify;
+      read FFixedAlignment write SetGridFixedAlignment default taLeftJustify;
     property FocusDraw: boolean
-      read FFocusDraw write FFocusDraw default True;
+      read FFocusDraw write SetGridFocusDraw default True;
     property TowColors: boolean
       read FTowColors write FSetTowColors default False;
     property TowColorOdd: TColor
@@ -148,7 +152,7 @@ type
     property TowColorEven: TColor
       read FTowColorEven write FSetTowColorEven default clWhite;
     property MultiLines: boolean
-      read FMultiLines write FMultiLines default False;
+      read FMultiLines write SetGridMultiLines default False;
     // ↓↓↓↓↓↓↓↓↓↓↓↓ 2009/06/26
     property Layout: TTextLayout
       read FLayout write SetLayout default tlCenter;
@@ -352,10 +356,10 @@ var
   pPrm: PCellDrawParams;
 begin
   CheckColRowRange(AValue.Col, AValue.Row);
-  // パラメータ書き込み位置取得、書き込み
-  pPrm := GetParamPointer(AValue.Col, AValue.Row, True);
+  // Validate before allocation so rejected input cannot override column defaults.
   if (AValue.FontIndex < -1) or (AValue.FontIndex >= FFontList.Count) then
     raise ERangeError.Create('Font index out of range');
+  pPrm := GetParamPointer(AValue.Col, AValue.Row, True);
   pPrm^ := AValue;
   Invalidate;
 end;
@@ -442,7 +446,7 @@ begin
   pPrm := GetParamPointer(ACol, ARow, False);
   if (pPrm = nil) and (ARow>= FixedRows) then pPrm := GetParamPointer(ACol, -1, False);
   if pPrm = nil then
-    Result := FAlignment
+    Result := GetDefaultCellParams(ACol, ARow).Alignment
   else
     Result := pPrm^.Alignment;
 end;
@@ -529,7 +533,7 @@ begin
   pPrm := GetParamPointer(ACol, ARow, False);
   if (pPrm = nil) and (ARow>= FixedRows) then pPrm := GetParamPointer(ACol, -1, False);
   if pPrm = nil then
-    Result := Color
+    Result := GetDefaultCellParams(ACol, ARow).BackColor
   else
     Result := pPrm^.BackColor;
 end;
@@ -857,7 +861,8 @@ begin
   CheckColRowRange(ACol, ARow);
   // パラメータ位置取得
   pPrm := GetParamPointer(ACol, ARow, False);
-  if pPrm = nil then pPrm := GetParamPointer(ACol, -1, False);
+  if (pPrm = nil) and (ARow >= FixedRows) then
+    pPrm := GetParamPointer(ACol, -1, False);
   if pPrm = nil then
     Result := FMultiLines
   else
@@ -890,6 +895,38 @@ begin
     Invalidate;
   end;
 end;
+procedure TSunColGrid.SetGridAlignment(Value: TAlignment);
+begin
+  if FAlignment <> Value then begin
+    FAlignment := Value;
+    Invalidate;
+  end;
+end;
+
+procedure TSunColGrid.SetGridFixedAlignment(Value: TAlignment);
+begin
+  if FFixedAlignment <> Value then begin
+    FFixedAlignment := Value;
+    Invalidate;
+  end;
+end;
+
+procedure TSunColGrid.SetGridFocusDraw(Value: Boolean);
+begin
+  if FFocusDraw <> Value then begin
+    FFocusDraw := Value;
+    Invalidate;
+  end;
+end;
+
+procedure TSunColGrid.SetGridMultiLines(Value: Boolean);
+begin
+  if FMultiLines <> Value then begin
+    FMultiLines := Value;
+    Invalidate;
+  end;
+end;
+
 procedure TSunColGrid.SetLayout(Value: TTextLayout);
 begin
   if FLayout <> Value then
