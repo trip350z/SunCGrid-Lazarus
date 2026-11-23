@@ -4,6 +4,8 @@
                                       2000/01/31 SUNTEC Konagai
                                       2005/03/04 SUNTEC Toshima
                                       2009/06/26 SUNTEC Konagai
+                                      2026/11/23 164 SYSTEMS
+                                      Lazarus / LCL 移植・修正
 -------------------------------------------------------------------------------
 　以下のプロパティ／メソッドを追加。
     MultiLines: Boolean;
